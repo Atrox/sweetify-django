@@ -4,13 +4,13 @@
 [![Latest Version](https://img.shields.io/pypi/v/sweetify.svg?style=flat-square)](https://pypi.python.org/pypi/sweetify)
 [![Coverage Status](https://img.shields.io/coveralls/Atrox/sweetify-django.svg?style=flat-square)](https://coveralls.io/r/Atrox/sweetify-django)
 
-This gem allows you to use [SweetAlert](http://t4t5.github.io/sweetalert/) or [SweetAlert2](https://github.com/limonte/sweetalert2) for your temporary messages.
+**Sweetify** allows you to use [SweetAlert](http://t4t5.github.io/sweetalert/) or [SweetAlert2](https://github.com/limonte/sweetalert2) for your temporary messages.
 _See the examples below, to see how to use this library_
 
 ## Installation
 **Note: This package does not provide the client-side files of SweetAlert. You have to provide them yourself.**
 
-Add this line to your application's Gemfile:
+Install the latest version with `pip`:
 
 ```bash
 pip install --upgrade sweetify
