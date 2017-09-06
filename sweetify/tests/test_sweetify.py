@@ -7,7 +7,7 @@ import sweetify
 
 class SimpleTest(SimpleTestCase):
     def setUp(self):
-        super().setUp()
+        super(SimpleTest, self).setUp()
 
         self.request = RequestFactory().get('/fake-path')
         self.request.session = {}

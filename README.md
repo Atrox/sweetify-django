@@ -16,7 +16,15 @@ Add this line to your application's Gemfile:
 pip install --upgrade sweetify
 ```
 
-Next add the following line to the bottom of your layout/base template:
+Then you have to add `sweetify` to your django apps:
+```python
+INSTALLED_APPS = [
+    ...
+    'sweetify'
+]
+```
+
+Next add the following lines to the bottom of your layout/base template:
 ```html
 ...
 
