@@ -20,7 +20,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 try:
     import pypandoc
 
-    long_description = pypandoc.convert(os.path.join(here, 'README.md'), 'rst')
+    long_description = pypandoc.convert(os.path.join(here, 'README.md'), 'rst').replace("\r","")
 except(IOError, ImportError):
     long_description = open('README.md').read()
 
@@ -93,6 +93,7 @@ setup(
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
+    platforms=['any'],
     cmdclass={
         'publish': PublishCommand,
     },
