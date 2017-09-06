@@ -9,7 +9,8 @@ from setuptools import find_packages, setup, Command
 
 # Package meta-data.
 NAME = 'sweetify'
-DESCRIPTION = 'TODO: Placeholder - Description'
+DESCRIPTION = 'SweetAlert integration for Django'
+KEYWORDS = ['sweetalert', 'django', 'messages']
 URL = 'https://github.com/atrox/sweetify-django'
 AUTHOR = 'Atrox'
 EMAIL = 'mail@atrox.me'
@@ -71,9 +72,10 @@ setup(
     author=AUTHOR,
     author_email=EMAIL,
     url=URL,
+    keywords=KEYWORDS,
     packages=find_packages(exclude=('tests',)),
     include_package_data=True,
-    license='ISC',
+    license='BSD 3-Clause License',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
