@@ -46,7 +46,7 @@ sweetify.sweetalert(self.request, 'Westworld is awesome', text='Really... if you
 # Additional methods with the type already defined
 sweetify.info(self.request, 'Message sent', button='Ok', timer=3000)
 sweetify.success(self.request, 'You successfully changed your password')
-sweetify.error(self.request, 'Some error happened here - reload the site' persistent=':(')
+sweetify.error(self.request, 'Some error happened here - reload the site', persistent=':(')
 sweetify.warning(self.request, 'This is a warning... I guess')
 ```
 
