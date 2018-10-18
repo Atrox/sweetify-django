@@ -30,5 +30,7 @@ matrix:
   exclude:
     - python: 2.7
       env: DJANGO='https://github.com/django/django/archive/master.tar.gz'
+    - python: 2.7
+      env: DJANGO='django>=2.1.0,<2.2.0'
   allow_failures:
     - env: DJANGO='https://github.com/django/django/archive/master.tar.gz'
