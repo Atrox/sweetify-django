@@ -1,0 +1,25 @@
+[tool.poetry]
+name = 'sweetify'
+version = '1.0.3'
+description = 'SweetAlert integration for Django'
+authors = ['Atrox <mail@atrox.me>']
+license = 'BSD-3-Clause'
+
+readme = 'README.md'
+
+homepage = 'https://github.com/Atrox/sweetify-django'
+repository = 'https://github.com/Atrox/sweetify-django'
+
+keywords = ['sweetalert', 'django', 'messages']
+
+
+[tool.poetry.dependencies]
+python = '~2.7 || ^3.4'
+
+[tool.poetry.dev-dependencies]
+pytest = '^3.9'
+pytest-cov = '^2.6'
+
+[build-system]
+requires = ['poetry>=0.12']
+build-backend = 'poetry.masonry.api'
