@@ -102,6 +102,20 @@ sweetify.info(self.request, 'Sweet!', text='Here is a custom image', imageUrl='i
 ```
 
 
+
+## Development
+Use the `Makefile`to execute common tasks:
+
+- Install dependencies
+```shell
+$ make install
+```
+
+- Run all tests
+```shell
+$ make test
+```
+
 ## Contributing
 Everyone is encouraged to help improve this project. Here are a few ways you can help:
 
