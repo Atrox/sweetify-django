@@ -12,6 +12,6 @@ def sweetify(context):
 
     return mark_safe("""
 <script>
-swal({})
+Swal.fire({})
 </script>
 """.format(opts))
