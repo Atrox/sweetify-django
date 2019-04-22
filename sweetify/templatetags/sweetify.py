@@ -11,7 +11,7 @@ def sweetify(context):
     if not opts:
         return ''
 
-    if settings.SWEETIFY_SWEETALERT_LIBRARY == 'sweetalert2':
+    if getattr(settings, 'SWEETIFY_SWEETALERT_LIBRARY', 'sweetalert2') == 'sweetalert2':
         script = 'Swal.fire({})'.format(opts)
     else:
         script = 'swal({})'.format(opts)
