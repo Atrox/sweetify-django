@@ -25,3 +25,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'crispy_forms.tests.urls'
 SECRET_KEY = 'secretkey'
 SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+# sweetify
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
