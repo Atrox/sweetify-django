@@ -48,7 +48,7 @@ def sweetalert(request, title, **kwargs):
             opts['confirmButtonText'] = persistent
 
     # sweetalert changes
-    if settings.SWEETIFY_SWEETALERT_LIBRARY == 'sweetalert':
+    if getattr(settings, 'SWEETIFY_SWEETALERT_LIBRARY', 'sweetalert2') == 'sweetalert':
         opts['icon'] = opts.pop('type', None)
         opts['closeOnClickOutside'] = opts.pop('allowOutsideClick', None)
 
