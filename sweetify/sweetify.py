@@ -1,6 +1,8 @@
 import json
 import sys
 
+from django.conf import settings
+
 from .encoder import LazyEncoder
 
 DEFAULT_OPTS = {
@@ -44,6 +46,16 @@ def sweetalert(request, title, **kwargs):
 
         if _is_string(persistent):
             opts['confirmButtonText'] = persistent
+
+    # sweetalert changes
+    if settings.SWEETIFY_SWEETALERT_LIBRARY == 'sweetalert':
+        opts['icon'] = opts.pop('type', None)
+        opts['closeOnClickOutside'] = opts.pop('allowOutsideClick', None)
+
+        if opts.pop('showConfirmButton', False):
+            opts['button'] = opts['confirmButtonText']
+        else:
+            opts['button'] = False
 
     _flash_config(request, opts)
 

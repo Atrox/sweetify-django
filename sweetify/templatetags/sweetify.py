@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 from django.utils.safestring import mark_safe
 
 register = template.Library()
@@ -10,8 +11,13 @@ def sweetify(context):
     if not opts:
         return ''
 
+    if settings.SWEETIFY_SWEETALERT_LIBRARY == 'sweetalert2':
+        script = 'Swal.fire({})'.format(opts)
+    else:
+        script = 'swal({})'.format(opts)
+
     return mark_safe("""
 <script>
-swal({})
+{}
 </script>
-""".format(opts))
+""".format(script))
