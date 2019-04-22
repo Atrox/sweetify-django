@@ -24,10 +24,9 @@ INSTALLED_APPS = [
 ]
 ```
 
-Next up, you have to specify, in your settings, which library you are using (SweetAlert or SweetAlert2):
+Next up you have to specify, in your settings, which library you are using (SweetAlert or SweetAlert2):
 ```python
-SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert'
-# or
+# possible options: 'sweetalert', 'sweetalert2' - default is 'sweetalert2'
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 ```
 
