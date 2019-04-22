@@ -24,6 +24,13 @@ INSTALLED_APPS = [
 ]
 ```
 
+Next up, you have to specify, in your settings, which library you are using (SweetAlert or SweetAlert2):
+```python
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert'
+# or
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+```
+
 Next add the following lines to the bottom of your layout/base template:
 ```html
 ...
