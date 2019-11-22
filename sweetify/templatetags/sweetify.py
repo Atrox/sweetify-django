@@ -7,7 +7,6 @@ register = template.Library()
 
 @register.simple_tag(takes_context=True)
 def sweetify(context):
-	#TODO checkejar si es una llista, en cas afirmatiu s'ha flashejat mitjançant un multiple()
 	opts = context.request.session.pop('sweetify', None)
 
 	if not opts:
