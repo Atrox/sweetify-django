@@ -16,6 +16,8 @@ DEFAULT_OPTS = {
 def _flash_config(request, opts):
     request.session['sweetify'] = json.dumps(opts, cls=LazyEncoder)
 
+def _flash_multiple_configs(request, jsonData):
+    request.session['sweetify'] = jsonData
 
 def _is_string(s):
     # if we use Python 3
@@ -24,12 +26,7 @@ def _is_string(s):
     # we use Python 2
     return isinstance(s, basestring)
 
-
-def sweetalert(request, title, **kwargs):
-    opts = DEFAULT_OPTS.copy()
-    opts.update(kwargs)
-
-    opts['title'] = title
+def _treat_data(opts):
 
     button = opts.pop('button', None)
     if button:
@@ -56,7 +53,13 @@ def sweetalert(request, title, **kwargs):
             opts['button'] = opts['confirmButtonText']
         else:
             opts['button'] = False
+    return opts
 
+def sweetalert(request, title, **kwargs):
+    opts = DEFAULT_OPTS.copy()
+    opts.update(kwargs)
+    opts['title'] = title
+    opts = _treat_data(opts)    
     _flash_config(request, opts)
 
 
@@ -78,3 +81,12 @@ def error(request, title, **kwargs):
 def warning(request, title, **kwargs):
     kwargs['type'] = 'warning'
     return sweetalert(request, title, **kwargs)
+
+def multiple(request, *args):
+    optsls = []
+    for dictionary in args:
+        opts = DEFAULT_OPTS.copy()
+        opts.update(dictionary)
+        opts = _treat_data(opts)
+        optsls.append(json.dumps(opts, cls=LazyEncoder))
+    _flash_multiple_configs(request, optsls)
