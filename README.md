@@ -56,6 +56,16 @@ sweetify.error(self.request, 'Some error happened here - reload the site', persi
 sweetify.warning(self.request, 'This is a warning... I guess')
 ```
 
+Additionally, you can issue multiple alerts without reloading the page **ONLY** if you are using SweetAlerts 2. To do so, you must define your options in a dictionary:
+```python
+import sweetify
+
+# Call two consecutive alerts (args1 is the options dict for the first alert and args2 the one for the second alert):
+sweetify.multiple(self.request, args1, args2)
+
+# Call five consecutive alerts:
+sweetify.multiple(self.request, args1, args2, args3, args4, args5)
+```
 ## Example Usage
 ```python
 import sweetify
@@ -64,7 +74,16 @@ def test_view(request):
     sweetify.success(request, 'You did it', text='Good job! You successfully showed a SweetAlert message', persistent='Hell yeah')
     return redirect('/')
 ```
+Example usage for multiple alerts:
+```python
+import sweetify
 
+def test_view(request):
+    args1 = dict(title='Test1', icon='info', text="Text placeholder1", button="Next")
+    args2 = dict(title='Test2', icon='success', text="Text placeholder2", timer=5000, timerProgressBar='true', persistent="Close")
+    sweetify.multiple(request, args1, args2)
+    return redirect('/')
+```
 ## Replacement for SuccessMessageMixin
 Sweetify includes a drop-in replacement for `SuccessMessageMixin`.
 Just replace the Django mixin with Sweetify's `SweetifySuccessMixin` and you are good to go.
