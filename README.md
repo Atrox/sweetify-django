@@ -47,7 +47,7 @@ You can now easily create alerts in your views with any of the following methods
 import sweetify
 
 # Base method with no type specified
-sweetify.sweetalert(self.request, 'Westworld is awesome', text='Really... if you have the chance - watch it!' persistent='I agree!')
+sweetify.sweetalert(self.request, 'Westworld is awesome', text='Really... if you have the chance - watch it!', persistent='I agree!')
 
 # Additional methods with the type already defined
 sweetify.info(self.request, 'Message sent', button='Ok', timer=3000)
