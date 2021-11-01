@@ -76,7 +76,7 @@ def sweetalert(request, title, **kwargs):
     _flash_config(request, opts)
 
 
-def toast(request, title, icon, **kwargs):
+def toast(request, title, icon='success', **kwargs):
     kwargs['icon'] = icon
     kwargs['toast'] = True
     kwargs['position'] ='top-end'
