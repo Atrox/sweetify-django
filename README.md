@@ -54,7 +54,18 @@ sweetify.info(self.request, 'Message sent', button='Ok', timer=3000)
 sweetify.success(self.request, 'You successfully changed your password')
 sweetify.error(self.request, 'Some error happened here - reload the site', persistent=':(')
 sweetify.warning(self.request, 'This is a warning... I guess')
-sweetify.toast(self.request, 'Cheers to new toast', 'error', timer="3000")
+```
+
+basic toast alert
+```python
+import sweetify
+
+# By default success toast with self distrust will be displayed
+sweetify.toast(self.request, 'Cheers to new toast')
+# Error toast with self distrust in 3 second will be displayed
+sweetify.toast(self.request, 'Oops, something went wrong !', timer=3000)
+# Warning toast with "Awesome sauce" button (user interaction required to close)
+sweetify.toast(self.request, 'Cheers to new toast', 'warning', persistent_toast="Awesome sauce")
 ```
 
 Additionally, you can issue multiple alerts without reloading the page **ONLY** if you are using SweetAlerts 2. To do so, you must define your options in a dictionary:
