@@ -86,22 +86,22 @@ def toast(request, title, icon, **kwargs):
 
 
 def info(request, title, **kwargs):
-    kwargs['type'] = 'info'
+    kwargs['icon'] = 'info'
     return sweetalert(request, title, **kwargs)
 
 
 def success(request, title, **kwargs):
-    kwargs['type'] = 'success'
+    kwargs['icon'] = 'success'
     return sweetalert(request, title, **kwargs)
 
 
 def error(request, title, **kwargs):
-    kwargs['type'] = 'error'
+    kwargs['icon'] = 'error'
     return sweetalert(request, title, **kwargs)
 
 
 def warning(request, title, **kwargs):
-    kwargs['type'] = 'warning'
+    kwargs['icon'] = 'warning'
     return sweetalert(request, title, **kwargs)
 
 
