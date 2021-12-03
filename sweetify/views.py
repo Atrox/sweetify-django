@@ -6,7 +6,8 @@ class SweetifySuccessMixin(object):
     Adds a sweetalert success message on successful form submission.
     Drop-in replacement for django's SuccessMessageMixin.
     """
-    success_message = ''
+
+    success_message = ""
     sweetify_options = {}
 
     def form_valid(self, form):
