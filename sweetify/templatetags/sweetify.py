@@ -15,7 +15,7 @@ def sweetify(context):
 
     if isinstance(opts, list):
         if library == "sweetalert":
-            raise RuntimeError("multiple alerts are currently not supported for sweetalert 1")
+            raise RuntimeError("multiple alerts are currently not supported in sweetalert")
 
         script = concatenate(opts)
     else:
