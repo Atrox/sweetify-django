@@ -17,9 +17,9 @@ keywords = ['sweetalert', 'django', 'messages']
 python = '^3.6.2'
 
 [tool.poetry.dev-dependencies]
-pytest = '^3.9'
-pytest-cov = '^2.6'
-django = "^1.11"
+pytest = '^6.2'
+pytest-cov = '^3.0'
+django = "^3.2"
 black = "^21.11b1"
 
 [build-system]
