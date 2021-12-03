@@ -56,6 +56,18 @@ sweetify.error(self.request, 'Some error happened here - reload the site', persi
 sweetify.warning(self.request, 'This is a warning... I guess')
 ```
 
+basic toast alert
+```python
+import sweetify
+
+# By default success toast with self distrust will be displayed
+sweetify.toast(self.request, 'Cheers to new toast')
+# Error toast with self distrust in 3 second will be displayed
+sweetify.toast(self.request, 'Oops, something went wrong !', timer=3000)
+# Warning toast with "Awesome sauce" button (user interaction required to close)
+sweetify.toast(self.request, 'Cheers to new toast', 'warning', persistent_toast="Awesome sauce")
+```
+
 Additionally, you can issue multiple alerts without reloading the page **ONLY** if you are using SweetAlerts 2. To do so, you must define your options in a dictionary:
 ```python
 import sweetify
@@ -84,6 +96,16 @@ def test_view(request):
     sweetify.multiple(request, args1, args2)
     return redirect('/')
 ```
+
+Example for toast alerts
+
+```python
+import sweetify
+
+# persistent toast alert with warning icon
+sweetify.toast(self.request, 'Cheers to new toast', 'warning', persistent_toast="Awesome sauce")
+```
+
 ## Replacement for SuccessMessageMixin
 Sweetify includes a drop-in replacement for `SuccessMessageMixin`.
 Just replace the Django mixin with Sweetify's `SweetifySuccessMixin` and you are good to go.

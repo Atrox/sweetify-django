@@ -16,8 +16,10 @@ DEFAULT_OPTS = {
 def _flash_config(request, opts):
     request.session['sweetify'] = json.dumps(opts, cls=LazyEncoder)
 
+
 def _flash_multiple_configs(request, jsonData):
     request.session['sweetify'] = jsonData
+
 
 def _is_string(s):
     # if we use Python 3
@@ -25,6 +27,7 @@ def _is_string(s):
         return isinstance(s, str)
     # we use Python 2
     return isinstance(s, basestring)
+
 
 def _treat_data(opts):
 
@@ -34,6 +37,13 @@ def _treat_data(opts):
 
         if _is_string(button):
             opts['confirmButtonText'] = button
+
+    persistent_toast = opts.pop('persistent_toast', None)
+    if persistent_toast:
+        opts['showConfirmButton'] = True
+        opts['timer'] = None
+        if _is_string(persistent_toast):
+            opts['confirmButtonText'] = persistent_toast    
 
     persistent = opts.pop('persistent', None)
     if persistent:
@@ -55,32 +65,45 @@ def _treat_data(opts):
             opts['button'] = False
     return opts
 
+
 def sweetalert(request, title, **kwargs):
     opts = DEFAULT_OPTS.copy()
     opts.update(kwargs)
     opts['title'] = title
-    opts = _treat_data(opts)    
+    if opts.pop('is_toast', None):
+        opts.pop('allowOutsideClick', None)
+    opts = _treat_data(opts)
     _flash_config(request, opts)
 
 
+def toast(request, title, icon='success', **kwargs):
+    kwargs['icon'] = icon
+    kwargs['toast'] = True
+    kwargs['position'] ='top-end'
+    kwargs['timerProgressBar'] = True
+    kwargs['is_toast'] = True
+    return sweetalert(request, title, **kwargs)
+
+
 def info(request, title, **kwargs):
-    kwargs['type'] = 'info'
+    kwargs['icon'] = 'info'
     return sweetalert(request, title, **kwargs)
 
 
 def success(request, title, **kwargs):
-    kwargs['type'] = 'success'
+    kwargs['icon'] = 'success'
     return sweetalert(request, title, **kwargs)
 
 
 def error(request, title, **kwargs):
-    kwargs['type'] = 'error'
+    kwargs['icon'] = 'error'
     return sweetalert(request, title, **kwargs)
 
 
 def warning(request, title, **kwargs):
-    kwargs['type'] = 'warning'
+    kwargs['icon'] = 'warning'
     return sweetalert(request, title, **kwargs)
+
 
 def multiple(request, *args):
     optsls = []
