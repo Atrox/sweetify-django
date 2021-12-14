@@ -24,7 +24,11 @@ def sweetify(context):
         else:
             script = "swal({})".format(opts)
 
-    return mark_safe("""<script>{}</script>""".format(script))
+    nonce_tag = getattr(settings, "SWEETIFY_CSP_NONCE", None)
+    if nonce_tag:
+        return mark_safe("""<script nonce='{}'>{}</script>""".format(nonce_tag, script))
+    else:
+        return mark_safe("""<script>{}</script>""".format(script))
 
 
 def concatenate(list):
