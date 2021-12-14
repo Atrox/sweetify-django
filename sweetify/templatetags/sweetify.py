@@ -6,7 +6,7 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def sweetify(context):
+def sweetify(context, nonce=None):
     opts = context.request.session.pop("sweetify", None)
     library = getattr(settings, "SWEETIFY_SWEETALERT_LIBRARY", "sweetalert2")
 
@@ -24,9 +24,8 @@ def sweetify(context):
         else:
             script = "swal({})".format(opts)
 
-    nonce_tag = getattr(settings, "SWEETIFY_CSP_NONCE", None)
-    if nonce_tag:
-        return mark_safe("""<script nonce='{}'>{}</script>""".format(nonce_tag, script))
+    if nonce:
+        return mark_safe("""<script nonce='{}'>{}</script>""".format(nonce, script))
     else:
         return mark_safe("""<script>{}</script>""".format(script))
 
