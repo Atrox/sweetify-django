@@ -1,6 +1,6 @@
 [tool.poetry]
 name = 'sweetify'
-version = '2.2.0'
+version = '2.3.0'
 description = 'SweetAlert integration for Django'
 authors = ['Atrox <hello@atrox.dev>']
 license = 'BSD-3-Clause'
