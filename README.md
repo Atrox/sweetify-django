@@ -8,6 +8,7 @@
 _See the examples below, to see how to use this library_
 
 ## Installation
+
 **Note: This package does not provide the client-side files of SweetAlert. You have to provide them yourself.**
 
 Install the latest version with `pip`:
@@ -17,6 +18,7 @@ pip install --upgrade sweetify
 ```
 
 Then you have to add `sweetify` to your django apps:
+
 ```python
 INSTALLED_APPS = [
     ...
@@ -25,13 +27,15 @@ INSTALLED_APPS = [
 ```
 
 Next up you have to specify, in your settings, which library you are using (SweetAlert or SweetAlert2):
+
 ```python
 # possible options: 'sweetalert', 'sweetalert2' - default is 'sweetalert2'
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 ```
 
 Next add the following lines to the bottom of your layout/base template:
-```html
+
+```jinja
 ...
 
 {% load sweetify %}
@@ -42,7 +46,9 @@ Next add the following lines to the bottom of your layout/base template:
 ```
 
 ## Usage
+
 You can now easily create alerts in your views with any of the following methods provided by **Sweetify**:
+
 ```python
 import sweetify
 
@@ -56,7 +62,8 @@ sweetify.error(self.request, 'Some error happened here - reload the site', persi
 sweetify.warning(self.request, 'This is a warning... I guess')
 ```
 
-We also support toast messages *(SweetAlert2 only)*
+We also support toast messages _(SweetAlert2 only)_
+
 ```python
 import sweetify
 
@@ -68,6 +75,7 @@ sweetify.toast(self.request, 'Persistent toast that only goes away once clicked'
 ```
 
 Additionally, you can issue multiple alerts without reloading the page **ONLY** if you are using SweetAlerts 2. To do so, you must define your options in a dictionary:
+
 ```python
 import sweetify
 
@@ -77,7 +85,9 @@ sweetify.multiple(self.request, args1, args2)
 # Call five consecutive alerts:
 sweetify.multiple(self.request, args1, args2, args3, args4, args5)
 ```
+
 ## Example Usage
+
 ```python
 import sweetify
 
@@ -85,7 +95,9 @@ def test_view(request):
     sweetify.success(request, 'You did it', text='Good job! You successfully showed a SweetAlert message', persistent='Hell yeah')
     return redirect('/')
 ```
+
 Example usage for multiple alerts:
+
 ```python
 import sweetify
 
@@ -97,6 +109,7 @@ def test_view(request):
 ```
 
 ## Replacement for SuccessMessageMixin
+
 Sweetify includes a drop-in replacement for `SuccessMessageMixin`.
 Just replace the Django mixin with Sweetify's `SweetifySuccessMixin` and you are good to go.
 
@@ -110,9 +123,11 @@ class TestUpdateView(SweetifySuccessMixin, UpdateView):
 ```
 
 ## Options
+
 **By default, all alerts will dismiss after a sensible default number of seconds.**
 
 Default options set by **Sweetify**:
+
 ```python
 sweetify.DEFAULT_OPTS = {
     'showConfirmButton': False,
@@ -123,6 +138,7 @@ sweetify.DEFAULT_OPTS = {
 ```
 
 The following special options provided by **Sweetify** are available:
+
 ```python
 # Shows the alert with a button, but will still close automatically
 sweetify.sweetalert(self.request, 'Title', button=True)
@@ -134,26 +150,41 @@ sweetify.sweetalert(self.request, 'Title', persistent='Awesome!') # Custom text 
 ```
 
 You also can use any other available option that [SweetAlert accepts](http://t4t5.github.io/sweetalert/):
+
 ```python
 sweetify.info(self.request, 'Sweet!', text='Here is a custom image', imageUrl='images/thumbs-up.jpg', timer=5000)
 ```
 
+If you use [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) you can use the optional `nonce` parameter on the `sweetify` tag:
 
+```jinja
+{% load sweetify %}
+
+<!-- static nonce -->
+{% sweetify nonce="XYZ" %}
+
+<!-- from request -->
+{% sweetify nonce=request.csp_nonce %}
+```
 
 ## Development
+
 Use the `Makefile`to execute common tasks:
 
 - Install dependencies
+
 ```shell
 $ make install
 ```
 
 - Run all tests
+
 ```shell
 $ make test
 ```
 
 ## Contributing
+
 Everyone is encouraged to help improve this project. Here are a few ways you can help:
 
 - [Report bugs](https://github.com/atrox/sweetify-django/issues)
